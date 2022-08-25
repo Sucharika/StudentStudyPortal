@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Student-dashboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <style>
+  body{
+    background-image: url("{% static 'images/bg2.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;;
+  }
+  .hero-image {
+  background-image: url("{% static 'images/regisdiv.jpg' %}");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 100px ;
+  
+}
+.logo-image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+}
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-image: url("{% static 'images/profileback.jpg' %}");
+  color:white;
+}
+
+.title1 {
+  color: #FFF8DC;
+  font-size: 18px;
+}
+
+.button1 {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.a1 {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.button1:hover, a:hover {
+  opacity: 0.7;
+}
+.container1 {
+  width: 1600px;
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid;
+  border-top-color: #856036;
+  border-left-color: #5d4426;
+  border-bottom-color: #856036;
+  border-right-color: #5d4426;
+  position: relative;
+  background-size: cover;
+  align:center;
+}
+
+.photo {
+  width: 1600px;
+  height: 400px;
+  position: absolute;
+  animation: round 16s infinite;
+  opacity: 0;
+
+}
+
+@keyframes round {
+  25% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+}
+img:nth-child(1) {
+  animation-delay: 12s;
+}
+
+img:nth-child(2) {
+  animation-delay: 8s;
+}
+
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+
+img:nth-child(4) {
+  animation-delay: 0s;
+}
+
+  </style>
+
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+      <div class="logo-image">
+            <img src="{% static 'images/portal.png '%}" class="img-fluid">
+      </div>
+      </a>
+        <a class="navbar-brand" href="#">Studentstudy Portal</a>  {% if user.is_authenticated %}
+  <h1><span class="badge badge-pill badge-dark fa-l"> Hello {{user.username}} </span></h1>
+{% endif %}      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+              <i class='fa fa-home' style='color: white'></i>Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}"><i class='fas fa-user-check' style='color: white'></i> Profile</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Options
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'books' %}">Books</a>
+                <a class="dropdown-item" href="#">Wikipedia</a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{% url 'dictionary' %}">Dictionary</a>
+                <a class="dropdown-item" href="{% url 'youtube' %}">Youtube</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'todo' %}">To-do</a>
+                <a class="dropdown-item" href="{% url 'homework' %}">Homework</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'notes' %}">Notes</a>
+                <a class="dropdown-item" href="{% url 'conversion' %}">Conversion</a>
+                <div class="dropdown-divider"></div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Logout' %}"> <i class='fa fa-sign-out' style='color: white'></i> Logout</a>
+            </li>
+            <li class="nav-item">
+             {% else %}
+              <a class="nav-link" href="{% url 'Register' %}">
+              <i class='fa fa-users' style='color: white'></i> Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Login' %}"> <i class='fas fa-sign-in-alt' style='color: white'></i> Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    {% if messages %}
+      {% for msg in messages%}
+        <div class="alert alert-{{msg.tags}}" style= "color:red">{{msg}}</div>
+      {% endfor %}
+    {% endif %}
+
+
+    {% block content %}
+    {% endblock content %}
+
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  
+</body>
+
+</html>
+                    

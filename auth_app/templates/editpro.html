@@ -1,0 +1,18 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+<br /><br />
+
+
+<h2 style="text-align:center">Your Profile</h2>
+
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<label for = "pp">Profile Picture</label>
+<input type = "file" id="pp" name = "pp">
+<input type = "submit">
+</form>
+
+
+{%  endblock content %}
+

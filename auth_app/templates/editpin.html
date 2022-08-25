@@ -1,0 +1,25 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+<br /><br />
+
+
+<div class="container">
+
+<table style=" border: 2px ; color: white; text-align: center ;" background="{% static 'images/background1.jpg' %}" height="400" border="1" width="600" align="center">
+    </th ><td colspan = '2'><h2><i class='fa fa-id-card-o fa-lg' style='color: white'></i>  Edit Profile </h2></td>
+    </th>
+    <form method='POST'>
+        {% csrf_token %}
+        {{form}}
+      <tr>
+        <td colspan = '2' >
+        <a href ="{% url 'delete' user.id %}"><button type="button" class="btn btn-link">Delete account</button></a>   <input type ='Submit' class="btn btn-dark">
+        </td>
+    </tr>
+</table>
+    </form>
+</div>
+
+{%  endblock content %}
+

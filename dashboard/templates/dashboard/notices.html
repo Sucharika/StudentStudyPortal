@@ -1,0 +1,19 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br /><br />
+<div class ='jumbotron'> 
+      
+
+<div class="container">
+<form method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    {{form|crispy}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href = "{% url 'home' %}"><button type="back" class="btn btn-secondary">Back</button>
+</form>
+</div>
+</div>
+ {% endblock content %}

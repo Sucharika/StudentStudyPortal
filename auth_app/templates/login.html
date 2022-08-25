@@ -1,0 +1,26 @@
+{% extends 'dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+<div class = "container">
+<img   align = "center" src="{% static 'images/login.gif' %}" alt="Log in" width="150" height="100">
+<table style=" border: 2px ; color: white; text-align: center ;" background="{% static 'images/background1.jpg' %}" height="400" border="1" width="600" align="center">
+    </th ><td colspan = '2'><h2><i class='fa fa-id-card-o fa-lg' style='color: white'></i>  Login </h2></td>
+    </th>
+    <form method='POST'>
+        {% csrf_token %}
+        {{form}}
+      <tr>
+        <td colspan = '2' >
+        <input type ='Submit' class="btn btn-dark">
+        </td>
+    </tr>
+
+    </form>
+</table>
+</div>
+
+{% endblock content %}

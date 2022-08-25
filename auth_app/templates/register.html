@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %} 
+
+{% block title %} Register {% endblock title %}
+
+{% block content %}
+<div class = "container">
+ <img   align = "center" src="{% static 'images/register.gif' %}" alt="Register Now" width="150" height="100">
+<table style=" border: 2px ; color: white; text-align: center ;" background="{% static 'images/background1.jpg' %}" height="400" border="1" width="600" align="center">
+    </th ><td colspan = '2'><h2><i class="fas fa-users"></i> Register </h2></td></th>
+    <tr>
+    <form method='POST'>
+        {% csrf_token %}
+        {{form}}
+    </tr>
+    <tr>
+        <td colspan = '2' >
+        <input type ='Submit' class="btn btn-dark">
+        </td>
+    </tr>
+    <tr>
+        <td colspan = '2' >Already have an account? <a href="{% url 'Login'%}"><button type="button" class="btn btn-link">Log In</button></a>
+        
+        </td>
+    </tr>
+    </form>
+</table>
+</div>
+
+{% endblock content %}

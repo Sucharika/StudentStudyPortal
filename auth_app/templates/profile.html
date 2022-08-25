@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+
+<h2 style="text-align:center">Your Profile</h2>
+
+<div class="card1">
+{% if messages %}
+    <img src="{% static 'images/picstu.jpg' %}" alt="John" style="width:100%">
+{% else %}
+  <img src="{{pp.profile_pic.url}}" alt="John" style="width:100%">
+{% endif %}
+  <h1>{{user.first_name}} {{user.last_name}}</h1>
+  <p class="title1">{{user.username}}</p>
+  <p>Email <i class="fa fa-envelope" aria-hidden="true"></i>         :  {{user.email}}</p>
+  <p>Joined on <i class="fa fa-calendar" aria-hidden="true"></i> :  {{user.date_joined}}</p>
+  <div style="margin: 24px 0;">
+    
+  </div>
+  <p><a href= "{% url 'editpro' %}"><button class="button1" >Upload Profile photo </button><a href= "{% url 'editpin' user.id %}"><button class="button1" >Edit Details</button></a></p>
+</div>
+<br>
+
+{% if user.is_superuser %}
+  <a href= "{% url 'notices' %}"><button class="button1" >Add a Notice</button></a>
+
+{% endif %}
+
+{%  endblock content %}

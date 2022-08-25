@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="form-group">
+<h2 style="text-align:center">Create</h2>
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<select name = "Category">
+            <option value = "Political Science" selected>Political Science</option>
+            <option value = "Sociology">Sociology</option>
+            <option value = "Socialwork">Socialwork</option>
+            <option value = "Health and Body">Health and Body</option>
+            <option value = "Computer Science">Computer Science</option>
+            <option value = "Information Technology">Information Technology</option>
+            <option value = "Managerial Studies">Managerial Studies</option>
+            <option value = "Accountancy">Accountancy</option>
+            <option value = "Economics">Economics</option>
+            <option value = "English Literature">English Literature</option>
+            <option value = "English Grammar">English Grammar</option>
+            <option value = "Maths">Maths</option>
+            <option value = "Chemistry">Chemistry</option>
+            <option value = "Biology">Biology</option>
+            <option value = "Geology">Geology</option>
+            <option value = "Physics">Physics</option>
+            <option value = "Astronomy">Astronomy</option>
+            <option value = "Architectural and Structural">Architectural and Structural</option>
+            <option value = "Food and Hospitality">Food and Hospitality</option>
+         </select>
+<label for="title">Title:</label><br>
+  <input type="text" id="title" name="title"><br>
+  <label for="description">Description:</label><br>
+  <input type="text" style="height:100px; width:350px;">
+  <label for = "multiplefiles">Files</label>
+<input type = "file" id="files" multiple name = "uploadfiles">
+  <input type="submit" value="Submit">
+</form> 
+</div>
+{% endblock content %}

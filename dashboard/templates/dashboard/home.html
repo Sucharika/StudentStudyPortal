@@ -1,0 +1,172 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<div class="container1">
+  <img class='photo'  src="{% static 'images/sliderpic1.jpg' %}" alt="Image 1" />
+  <img class='photo'  src="{% static 'images/sliderpic2.jpg' %}" alt="Image 2" />
+  <img class='photo'  src="{% static 'images/sliderpic3.jpg' %}" alt="Image 3" />
+  <img class='photo'  src="{% static 'images/sliderpic4.jpg' %}" alt="Image 4" />
+
+</div>
+
+  <hr> <br>
+  <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+  <div class="card-header">Notice</div>
+  <div class="card-body">
+  {%if notices %}
+  {% for notice in notices %}
+    <h5 class="card-title">{{notice.title}}</h5>
+    <p class="card-text text-white">{{notice.description}}<br> 
+    {% if user.is_superuser %}
+                    <div class="card-footer mt-auto "><a href="{% url 'delete-notice' notice.id %}">
+                        <i class="fa fa-trash fa-2x"></i></a>
+                    </div>
+                    {% endif %}
+                    </p>
+  {% endfor %}
+  {% else %}
+    <h6> No New notices </h6>
+  {% endif %}
+  </div>
+</div>
+  <div class= "row">
+  <div>
+    <h1 style="text-align:center;">&nbsp;&nbsp;  Share your notes with your fellows</h1>
+  </div>
+    <div class="col-md-3">
+      <a href="{% url 'notes' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/notes1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Notes
+            </h5>
+           Lets make learning easier 
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+    
+    <br>
+<div class ="row">
+    <div>
+    <h1 style="text-align:center;"> &nbsp;&nbsp; Keep track of your work </h1>
+    </div>
+    <div class="col-md-3">
+      <a href="{% url 'homework' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/homework1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Homework
+            </h5>
+            Add homeworks and assign them deadlines. They will be displayed prioritised by deadlines.
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="{% url 'todo' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/todo1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              To Do
+            </h5>
+            Add your to-do lists for your day and remove them as you finish
+          </div>
+        </div>
+      </a>
+    </div>
+
+</div>
+  <br><br>
+<div class ="container">
+  <div>
+    <h1 style="text-align:center;"> &nbsp;&nbsp; Browse right here.       </h1>
+  </div>
+  <div>
+    <div class="col-md-3">
+      <a href="{% url 'youtube' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/youtube1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Youtube
+            </h5>
+            Search Youtube, select your desired video and play it.
+          </div>
+        </div>
+      </a>
+    </div>
+    </div>
+    <br/>
+    <div class="col-md-3">
+    <div>
+      <a href="{% url 'wiki' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/wiki1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              WikiPedia
+            </h5>
+            Take help from wikipedia to finish your assignments and notes faster.
+          </div>
+        </div>
+      </a>
+    </div>
+    </div>
+    <br/>
+    <div class="col-md-3 ">
+      <a href="{% url 'books' %}">
+        <div class="card mt-20">
+          <img class="card-img-top" src="{% static 'images/books1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Books
+            </h5>
+            Browse books in the internet and selct a suitable one.
+          </div>
+        </div>
+      </a>
+    </div>
+</div>
+  <div class= "row">
+  <div>
+    <h1 style="text-align:center;">&nbsp;&nbsp;  Use our tools for Convieniency</h1>
+  </div>
+    <div class="col-md-3">
+      <a href="{% url 'dictionary' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/dictionary1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Dictionary
+            </h5>
+            A vocabulary from a book is troubling you? No problem, enter the word, and the meaning will be displayed
+            almost instantaneously.
+          </div>
+        </div>
+      </a>
+    </div> 
+    <div class="col-md-3">
+      <a href="{% url 'conversion' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/conversion1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Conversion
+            </h5>
+            Check out the conversion table, that helps you to convert measurements to more familiar ones of your choice.
+          </div>
+        </div>
+      </a>
+    </div>
+</div>
+
+
+</section>
+{% endblock content %}
